@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	
+	<!-- Blinding Pulse -->
+	
+  <ThingDef ParentName="MoteBase">
+    <defName>FSFMoteBlindingPulse</defName>
+    <thingClass>MoteAttached</thingClass>
+    <altitudeLayer>MetaOverlays</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <solidTime>9999999</solidTime>
+      <needsMaintenance>true</needsMaintenance>
+      <attachedDrawOffset>(-0.65, 0, -1.1)</attachedDrawOffset>
+    </mote>
+    <graphicData>
+      <graphicClass>Graphic_Mote</graphicClass>
+      <texPath>UI/Abilities/BlindingPulse</texPath>
+      <drawSize>0.3</drawSize>
+    </graphicData>
+  </ThingDef>
+	
+	<!-- Focus -->
+	
+  <ThingDef ParentName="MoteBase">
+    <defName>FSFMoteFocus</defName>
+    <thingClass>MoteAttached</thingClass>
+    <altitudeLayer>MetaOverlays</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <solidTime>9999999</solidTime>
+      <needsMaintenance>true</needsMaintenance>
+      <attachedDrawOffset>(-0.35, 0, -1.1)</attachedDrawOffset>
+    </mote>
+    <graphicData>
+      <graphicClass>Graphic_Mote</graphicClass>
+      <texPath>UI/Abilities/Focus</texPath>
+      <drawSize>0.3</drawSize>
+    </graphicData>
+  </ThingDef>
+	
+	<!-- Painblock -->
+	
+  <ThingDef ParentName="MoteBase">
+    <defName>FSFMotePainblock</defName>
+    <thingClass>MoteAttached</thingClass>
+    <altitudeLayer>MetaOverlays</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <solidTime>9999999</solidTime>
+      <needsMaintenance>true</needsMaintenance>
+      <attachedDrawOffset>(-0.1, 0, -1.1)</attachedDrawOffset>
+    </mote>
+    <graphicData>
+      <graphicClass>Graphic_Mote</graphicClass>
+      <texPath>UI/Abilities/Painblock</texPath>
+      <drawSize>0.3</drawSize>
+    </graphicData>
+  </ThingDef>
+	
+	<!-- FSF Psyblade -->
+	
+  <ThingDef ParentName="MoteBase">
+    <defName>FSFMotePsyblade</defName>
+    <thingClass>MoteAttached</thingClass>
+    <altitudeLayer>MetaOverlays</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <solidTime>9999999</solidTime>
+      <needsMaintenance>true</needsMaintenance>
+      <attachedDrawOffset>(0.45, 0, -1.1)</attachedDrawOffset>
+    </mote>
+    <graphicData>
+      <graphicClass>Graphic_Mote</graphicClass>
+      <texPath>UI/Abilities/FSFPsyblade</texPath>
+      <drawSize>0.3</drawSize>
+    </graphicData>
+  </ThingDef>
+	
+	<!-- FSF Steelskin -->
+	
+  <ThingDef ParentName="MoteBase">
+    <defName>FSFMoteSteelskin</defName>
+    <thingClass>MoteAttached</thingClass>
+    <altitudeLayer>MetaOverlays</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <solidTime>9999999</solidTime>
+      <needsMaintenance>true</needsMaintenance>
+      <attachedDrawOffset>(0.15, 0, -1.1)</attachedDrawOffset>
+    </mote>
+    <graphicData>
+      <graphicClass>Graphic_Mote</graphicClass>
+      <texPath>UI/Abilities/FSFSteelskin</texPath>
+      <drawSize>0.5</drawSize>
+    </graphicData>
+  </ThingDef>
+
+</Defs>

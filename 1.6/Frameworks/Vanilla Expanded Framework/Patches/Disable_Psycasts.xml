@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+	
+	<!-- Disable Arctic Pinhole -->
+	
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>False</enabled>
+		<label>Disable the psycast Arctic Pinhole</label>
+		<mods>
+			<li>[FSF] More Psycast Powers</li>
+		</mods>
+		
+  		<operations>
+		
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/AbilityDef[defName = "FSFArcticPinhole"]</xpath>
+			</li>
+			
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName = "FSFArcticPinhole"]</xpath>
+			</li>
+			
+		</operations>
+
+	</Operation>
+	
+	<!-- Disable Disarm -->
+	
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>False</enabled>
+		<label>Disable the psycast Disarm</label>
+		<mods>
+			<li>[FSF] More Psycast Powers</li>
+		</mods>
+		
+  		<operations>
+		
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/AbilityDef[defName = "FSFDisarm"]</xpath>
+			</li>
+			
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/HediffDef[defName = "FSFDisarm"]</xpath>
+			</li>
+			
+		</operations>
+
+	</Operation>
+	
+	<!-- Disable Elemental Shield -->
+	
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>False</enabled>
+		<label>Disable the psycast Elemental Shield</label>
+		<mods>
+			<li>[FSF] More Psycast Powers</li>
+		</mods>
+		
+  		<operations>
+		
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/AbilityDef[defName = "FSFElementalShield"]</xpath>
+			</li>
+			
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/HediffDef[defName = "FSFElementalShield"]</xpath>
+			</li>
+			
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName = "FSFMoteElementalShield"]</xpath>
+			</li>
+			
+		</operations>
+
+	</Operation>
+	
+	<!-- Disable EMP Pulse -->
+	
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>False</enabled>
+		<label>Disable the psycast EMP Pulse</label>
+		<mods>
+			<li>[FSF] More Psycast Powers</li>
+		</mods>
+		
+  		<operations>
+		
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/AbilityDef[defName = "FSFEMPPulse"]</xpath>
+			</li>
+			
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName = "FSFEMPPulse"]</xpath>
+			</li>
+			
+		</operations>
+
+	</Operation>
+	
+	<!-- Disable Entomb -->
+	
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>False</enabled>
+		<label>Disable the psycast Entomb</label>
+		<mods>
+			<li>[FSF] More Psycast Powers</li>
+		</mods>
+		
+  		<operations>
+		
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/AbilityDef[defName = "FSFEntomb"]</xpath>
+			</li>
+			
+		</operations>
+
+	</Operation>
+	
+	<!-- Disable Firestorm -->
+	
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>False</enabled>
+		<label>Disable the psycast Firestorm</label>
+		<mods>
+			<li>[FSF] More Psycast Powers</li>
+		</mods>
+		
+  		<operations>
+		
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/AbilityDef[defName = "FSFFirestorm"]</xpath>
+			</li>
+			
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName = "FSFFirestorm"]</xpath>
+			</li>
+			
+		</operations>
+
+	</Operation>
+	
+	<!-- Disable Flamebolt -->
+	
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>False</enabled>
+		<label>Disable the psycast Flamebolt</label>
+		<mods>
+			<li>[FSF] More Psycast Powers</li>
+		</mods>
+		
+  		<operations>
+		
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/AbilityDef[defName = "FSFFlamebolt"]</xpath>
+			</li>
+			
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName = "FSFFlamebolt"]</xpath>
+			</li>
+			
+		</operations>
+
+	</Operation>
+	
+	<!-- Disable Fracture -->
+	
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>False</enabled>
+		<label>Disable the psycast Fracture</label>
+		<mods>
+			<li>[FSF] More Psycast Powers</li>
+		</mods>
+		
+  		<operations>
+		
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/AbilityDef[defName = "FSFFracture"]</xpath>
+			</li>
+			
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/HediffDef[defName = "FSFFracture"]</xpath>
+			</li>
+			
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName = "FSFMoteFracture"]</xpath>
+			</li>
+			
+		</operations>
+
+	</Operation>
+	
+	<!-- Disable Frostbite -->
+	
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>False</enabled>
+		<label>Disable the psycast Frostbite</label>
+		<mods>
+			<li>[FSF] More Psycast Powers</li>
+		</mods>
+		
+  		<operations>
+		
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/AbilityDef[defName = "FSFFrostbite"]</xpath>
+			</li>
+			
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName = "FSFFrostbite"]</xpath>
+			</li>
+			
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/DamageDef[defName = "FSFFrostbite"]</xpath>
+			</li>
+			
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/RulePackDef[defName = "FSFDamage_FSFFrostbite"]</xpath>
+			</li>
+			
+		</operations>
+
+	</Operation>
+	
+	<!-- Disable Mass Invisibility -->
+	
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>False</enabled>
+		<label>Disable the psycast Mass Invisibility</label>
+		<mods>
+			<li>[FSF] More Psycast Powers</li>
+		</mods>
+		
+  		<operations>
+		
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/AbilityDef[defName = "FSFMassInvisibility"]</xpath>
+			</li>
+			
+		</operations>
+
+	</Operation>
+	
+	<!-- Disable Mass Skip -->
+	
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>False</enabled>
+		<label>Disable the psycast Mass Skip</label>
+		<mods>
+			<li>[FSF] More Psycast Powers</li>
+		</mods>
+		
+  		<operations>
+		
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/AbilityDef[defName = "FSFMassSkip"]</xpath>
+			</li>
+			
+		</operations>
+
+	</Operation>
+	
+	<!-- Disable Psyblade -->
+	
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>False</enabled>
+		<label>Disable the psycast Psyblade</label>
+		<mods>
+			<li>[FSF] More Psycast Powers</li>
+		</mods>
+		
+  		<operations>
+		
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/AbilityDef[defName = "FSFPsyblade"]</xpath>
+			</li>
+			
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/HediffDef[defName = "FSFPsyblade"]</xpath>
+			</li>
+			
+		</operations>
+
+	</Operation>
+	
+	<!-- Disable Psychic Shock -->
+	
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>False</enabled>
+		<label>Disable the psycast Psychic Shock</label>
+		<mods>
+			<li>[FSF] More Psycast Powers</li>
+		</mods>
+		
+  		<operations>
+		
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/AbilityDef[defName = "FSFPsychicShock"]</xpath>
+			</li>
+			
+		</operations>
+
+	</Operation>
+	
+	<!-- Disable Stasis -->
+	
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>False</enabled>
+		<label>Disable the psycast Stasis</label>
+		<mods>
+			<li>[FSF] More Psycast Powers</li>
+		</mods>
+		
+  		<operations>
+		
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/AbilityDef[defName = "FSFStasis"]</xpath>
+			</li>
+			
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/HediffDef[defName = "FSFStasis"]</xpath>
+			</li>
+			
+		</operations>
+
+	</Operation>
+	
+	<!-- Disable Steelskin -->
+	
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>False</enabled>
+		<label>Disable the psycast Steelskin</label>
+		<mods>
+			<li>[FSF] More Psycast Powers</li>
+		</mods>
+		
+  		<operations>
+		
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/AbilityDef[defName = "FSFSteelskin"]</xpath>
+			</li>
+			
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/HediffDef[defName = "FSFSteelskin"]</xpath>
+			</li>
+			
+		</operations>
+
+	</Operation>
+	
+</Patch>

@@ -1,0 +1,1030 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	
+	<!-- Arctic Pinhole -->
+	
+  <AbilityDef ParentName="PsycastBaseSkip">
+    <defName>FSFArcticPinhole</defName>
+    <label>arctic pinhole</label>
+    <description>Generate a microscopic skipgate linked to a nearby arctic region. The frigid temperature leaks through the pinprick in spacetime, cooling the surrounding area until it closes. The cold brought through is enough to turn a small area into a freezer.</description>
+    <level>1</level>
+    <iconPath>UI/Abilities/FSFArcticPinhole</iconPath>
+    <canUseAoeToGetTargets>False</canUseAoeToGetTargets>
+    <statBases>
+      <Ability_PsyfocusCost>0.08</Ability_PsyfocusCost>
+      <Ability_EffectRadius>14.9</Ability_EffectRadius>
+      <Ability_Duration>5000</Ability_Duration>
+    </statBases>
+    <verbProperties>
+      <warmupTime>0.2</warmupTime>
+      <range>24.9</range>
+      <targetParams>
+        <canTargetPawns>False</canTargetPawns>
+        <canTargetLocations>True</canTargetLocations>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="CompProperties_AbilitySpawn">
+        <thingDef>FSFArcticPinhole</thingDef>
+        <allowOnBuildings>False</allowOnBuildings>
+      </li>
+      <li Class="CompProperties_AbilityEffecterOnTarget">
+        <effecterDef>Skip_Exit</effecterDef>
+        <maintainForTicks>60</maintainForTicks>
+        <scale>0.42</scale>
+      </li>
+      <li Class="CompProperties_AbilityFleckOnTarget">
+        <fleckDefs>
+          <li>PsycastSkipInnerExit</li>
+          <li>PsycastSkipOuterRingExit</li>
+        </fleckDefs>
+        <scale>0.42</scale>
+        <sound>Psycast_Skip_Exit</sound>
+        <preCastTicks>5</preCastTicks>
+      </li>
+    </comps>
+  </AbilityDef>
+	
+  <ThingDef ParentName="EtherealThingBase">
+    <defName>FSFArcticPinhole</defName>
+    <label>arctic pinhole</label>
+    <thingClass>ThingWithComps</thingClass>
+    <tickerType>Normal</tickerType>
+    <drawerType>RealtimeOnly</drawerType>
+    <drawOffscreen>true</drawOffscreen>
+    <category>PsychicEmitter</category>
+    <altitudeLayer>MoteOverheadLow</altitudeLayer>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Mote/SolarPinhole</texPath>
+      <shaderType>MoteGlowDistorted</shaderType>
+      <color>(173, 216, 230)</color>
+      <drawSize>2</drawSize>
+      <shaderParameters>
+        <_DistortionTex>/Other/Ripples</_DistortionTex>
+        <_distortionIntensity>0.05</_distortionIntensity>
+        <_DistortionScale>0.4</_DistortionScale>
+        <_distortionScrollSpeed>(0.07, 0.07, 0.0)</_distortionScrollSpeed>
+      </shaderParameters>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>3</glowRadius>
+        <glowColor>(173, 216, 230,0)</glowColor>
+      </li>
+      <li Class="CompProperties_HeatPusher">
+        <compClass>CompHeatPusherPowered</compClass>
+        <heatPerSecond>-10</heatPerSecond>
+        <heatPushMinTemperature>-20</heatPushMinTemperature>
+      </li>
+      <li Class="CompProperties_DestroyAfterDelay">
+        <delayTicks>300000</delayTicks>
+      </li>
+    </comps>
+  </ThingDef>
+	
+	<!-- Disarm -->
+	
+  <AbilityDef ParentName="PsycastBase">
+    <defName>FSFDisarm</defName>
+    <label>disarm</label>
+    <description>Momentarily disrupt motor function in the target's brain, preventing them from using their arms.</description>
+    <level>2</level>
+    <iconPath>UI/Abilities/FSFDisarm</iconPath>
+    <writeCombatLog>True</writeCombatLog>
+    <statBases>
+      <Ability_EntropyGain>25</Ability_EntropyGain>
+      <Ability_PsyfocusCost>0.015</Ability_PsyfocusCost>
+      <Ability_Duration>3</Ability_Duration>
+    </statBases>
+    <verbProperties>
+      <warmupTime>0.25</warmupTime>
+      <range>29.9</range>
+      <targetParams>
+        <canTargetAnimals>false</canTargetAnimals>
+		<canTargetMechs>false</canTargetMechs>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class = "CompProperties_AbilityGiveHediff">
+        <compClass>CompAbilityEffect_GiveHediff</compClass>
+        <hediffDef>FSFDisarm</hediffDef>
+        <durationMultiplier>PsychicSensitivity</durationMultiplier>
+        <psychic>True</psychic>
+        <goodwillImpact>-50</goodwillImpact>
+      </li>
+      <li Class="CompProperties_AbilityFleckOnTarget">
+        <fleckDef>PsycastPsychicEffect</fleckDef>
+      </li>
+    </comps>
+  </AbilityDef>
+	
+  <HediffDef ParentName = "PsycastHediffBase">
+    <defName>FSFDisarm</defName>
+    <label>psychic disarm</label>
+    <description>Psychically-induced difficulty in manipulation.</description>
+    <isBad>true</isBad>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Manipulation</capacity>
+            <setMax>0</setMax>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+	
+	<!-- Elemental Shield -->
+	
+  <AbilityDef ParentName="PsycastBase">
+    <defName>FSFElementalShield</defName>
+    <label>elemental shield</label>
+    <description>Generate a spherical skipgate that creates a safe stable temperature-controlled environment.</description>
+    <level>4</level>
+    <iconPath>UI/Abilities/FSFElementalShield</iconPath>
+    <statBases>
+      <Ability_EntropyGain>15</Ability_EntropyGain>
+      <Ability_PsyfocusCost>0.03</Ability_PsyfocusCost>
+      <Ability_Duration>250</Ability_Duration>
+    </statBases>
+    <verbProperties>
+      <warmupTime>0.25</warmupTime>
+      <range>27.9</range>
+      <targetParams>
+        <canTargetSelf>True</canTargetSelf>
+        <canTargetAnimals>True</canTargetAnimals>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class = "CompProperties_AbilityGiveHediff">
+        <compClass>CompAbilityEffect_GiveHediff</compClass>
+        <hediffDef>FSFElementalShield</hediffDef>
+        <onlyBrain>True</onlyBrain>
+        <psychic>True</psychic>
+      </li>
+      <li Class="CompProperties_AbilityFleckOnTarget">
+        <fleckDef>PsycastPsychicEffect</fleckDef>
+      </li>
+    </comps>
+  </AbilityDef>
+	
+  <HediffDef ParentName = "PsycastHediffBase">
+    <defName>FSFElementalShield</defName>
+    <label>psychic elemental shield</label>
+    <description>Psychically-induced environmental shielding.</description>
+    <isBad>false</isBad>
+    <stages>
+      <li>
+		<statOffsets>
+		  <ArmorRating_Heat>20.0</ArmorRating_Heat>
+		  <Flammability>-20.0</Flammability>
+		  <ComfyTemperatureMax>+2000.0</ComfyTemperatureMax>
+		  <ComfyTemperatureMin>-2000.0</ComfyTemperatureMin>
+		  <ToxicSensitivity>-20.0</ToxicSensitivity>
+		</statOffsets>
+      </li>
+    </stages>
+	<comps>
+      <li Class="HediffCompProperties_GiveHediffsInRange">
+        <range>-1</range>
+        <mote>FSFMoteElementalShield</mote>
+        <hideMoteWhenNotDrafted>false</hideMoteWhenNotDrafted>
+        <targetingParameters>
+        <canTargetSelf>True</canTargetSelf>
+        <canTargetAnimals>True</canTargetAnimals>
+        </targetingParameters>
+      </li>
+	</comps>
+  </HediffDef>
+	
+  <ThingDef ParentName="MoteBase">
+    <defName>FSFMoteElementalShield</defName>
+    <thingClass>MoteAttached</thingClass>
+    <altitudeLayer>MetaOverlays</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <solidTime>9999999</solidTime>
+      <needsMaintenance>true</needsMaintenance>
+      <attachedDrawOffset>(0, 0, 0)</attachedDrawOffset>
+    </mote>
+    <graphicData>
+      <graphicClass>Graphic_Mote</graphicClass>
+      <texPath>Other/ShieldBubble</texPath>
+      <drawSize>2</drawSize>
+      <color>(144, 238, 144)</color>
+    </graphicData>
+  </ThingDef>
+
+	<!-- EMP Pulse -->
+	
+  <AbilityDef ParentName="PsycastBaseSkip">
+    <defName>FSFEMPPulse</defName>
+    <label>EMP pulse</label>
+    <description>Generate a skipgate that causes a burst of electrical interference disabling all electrictonics in the area for brief time.</description>
+    <level>6</level>
+    <iconPath>UI/Abilities/FSFEMPPulse</iconPath>
+    <writeCombatLog>True</writeCombatLog>
+    <canUseAoeToGetTargets>False</canUseAoeToGetTargets>
+    <statBases>
+      <Ability_EntropyGain>65</Ability_EntropyGain>
+      <Ability_PsyfocusCost>0.06</Ability_PsyfocusCost>
+      <Ability_EffectRadius>2.4</Ability_EffectRadius>
+    </statBases>
+    <verbProperties>
+      <warmupTime>1</warmupTime>
+      <range>24.9</range>
+      <targetParams>
+        <canTargetPawns>True</canTargetPawns>
+        <canTargetMechs>True</canTargetMechs>
+        <canTargetAnimals>True</canTargetAnimals>
+        <canTargetLocations>True</canTargetLocations>
+		<canTargetBuildings>True</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="CompProperties_AbilitySpawn">
+        <thingDef>FSFEMPPulse</thingDef>
+        <allowOnBuildings>true</allowOnBuildings>
+      </li>
+      <li Class="CompProperties_AbilityEffecterOnTarget">
+        <effecterDef>Skip_Exit</effecterDef>
+        <maintainForTicks>60</maintainForTicks>
+      </li>
+      <li Class="CompProperties_AbilityFleckOnTarget">
+        <fleckDefs>
+          <li>PsycastSkipInnerExit</li>
+          <li>PsycastSkipOuterRingExit</li>
+        </fleckDefs>
+        <sound>Psycast_Skip_Exit</sound>
+        <preCastTicks>5</preCastTicks>
+      </li>
+    </comps>
+  </AbilityDef>
+	
+  <ThingDef>
+    <defName>FSFEMPPulse</defName>
+    <label>EMP pulse</label>
+    <description>This item does not exist if your reading this, what have you done?</description>
+    <category>Ethereal</category>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Building/Security/IEDEMP</texPath>
+      <drawSize>(0,0)</drawSize>
+	  </graphicData>
+	<size>(0, 0)</size>
+    <thingClass>ThingWithComps</thingClass>
+    <tickerType>Normal</tickerType>
+    <drawerType>RealtimeOnly</drawerType>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <comps>
+      <li Class="CompProperties_Lifespan">
+        <lifespanTicks>0</lifespanTicks>
+      </li>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>0</wickTicks>
+        <explosiveRadius>2.4</explosiveRadius>
+        <explosiveDamageType>EMP</explosiveDamageType>
+        <explodeOnKilled>true</explodeOnKilled>
+      </li>
+    </comps>
+  </ThingDef>
+	
+	<!-- Entomb -->
+	
+  <AbilityDef ParentName="PsycastBaseSkip">
+    <defName>FSFEntomb</defName>
+    <label>entomb</label>
+    <description>Form a temporary tomb by skipping rubble and soil up from deep under the ground.</description>
+    <level>5</level>
+    <iconPath>UI/Abilities/FSFEntomb</iconPath>
+    <writeCombatLog>True</writeCombatLog>
+    <statBases>
+      <Ability_EntropyGain>45</Ability_EntropyGain>
+      <Ability_PsyfocusCost>0.03</Ability_PsyfocusCost>
+    </statBases>
+    <verbProperties>
+      <warmupTime>1</warmupTime>
+      <range>24.9</range>
+      <targetParams>
+        <canTargetSelf>True</canTargetSelf>
+        <canTargetAnimals>True</canTargetAnimals>
+        <canTargetLocations>True</canTargetLocations>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class = "CompProperties_AbilityWallraise">
+        <compClass>CompAbilityEffect_Wallraise</compClass>
+        <pattern>
+          <li>(1, -1)</li>
+          <li>(1, 0)</li>
+          <li>(1, 1)</li>
+          <li>(0, -1)</li>
+		  <li>(0, 1)</li>
+          <li>(-1, -1)</li>
+          <li>(-1, 0)</li>
+          <li>(-1, 1)</li>
+        </pattern>
+        <screenShakeIntensity>1.0</screenShakeIntensity>
+        <clamorType>Ability</clamorType>
+        <clamorRadius>25</clamorRadius>
+        <sound>PsycastWallraise</sound>
+      </li>
+      <li Class="CompProperties_AbilityEffecterOnTarget">
+        <effecterDef>Skip_Exit</effecterDef>
+        <maintainForTicks>60</maintainForTicks>
+        <scale>1.55</scale>
+      </li>
+      <li Class="CompProperties_AbilityFleckOnTarget">
+        <fleckDefs>
+          <li>PsycastSkipInnerExit</li>
+          <li>PsycastSkipOuterRingExit</li>
+        </fleckDefs>
+        <scale>1.55</scale>
+        <sound>Psycast_Skip_Exit</sound>
+        <preCastTicks>5</preCastTicks>
+      </li>
+    </comps>
+  </AbilityDef>
+	
+	<!-- Firestorm -->
+	
+  <AbilityDef ParentName="PsycastBase">
+    <defName>FSFFirestorm</defName>
+    <label>firestorm</label>
+    <description>Generate a large skipgate linked to a nearby star to cause an enormous burst of flames.  Everything in range including the caster will be caught in the ensuing wave of fire.  Casting this takes 12 seconds of meditation, and afterwards, the caster will go into a two and a half day psychic coma.</description>
+    <level>6</level>
+    <iconPath>UI/Abilities/FSFFirestorm</iconPath>
+	<jobDef>CastAbilityOnThingUninterruptible</jobDef>
+    <targetRequired>False</targetRequired>
+	<showPsycastEffects>False</showPsycastEffects>
+	<showCastingProgressBar>True</showCastingProgressBar>
+    <warmupMote>Mote_WarmupNeuroquake</warmupMote>
+    <warmupStartSound>Psycast_Neuroquake_CastStart</warmupStartSound>
+    <warmupSound>Psycast_Neuroquake_CastLoop</warmupSound>
+    <warmupPreEndSound>Psycast_Neuroquake_CastEnd</warmupPreEndSound>
+    <warmupPreEndSoundSeconds>5</warmupPreEndSoundSeconds>
+    <writeCombatLog>True</writeCombatLog>
+    <statBases>
+      <Ability_PsyfocusCost>0.5</Ability_PsyfocusCost>
+      <Ability_Duration>2400</Ability_Duration>
+    </statBases>
+    <verbProperties>
+      <warmupTime>12</warmupTime>
+	  <range>50</range>
+      <targetParams>
+        <canTargetSelf>true</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="CompProperties_AbilitySpawn">
+        <thingDef>FSFFirestorm</thingDef>
+        <allowOnBuildings>false</allowOnBuildings>
+      </li>
+      <li Class="CompProperties_AbilityGiveHediff">
+        <compClass>CompAbilityEffect_GiveHediff</compClass>
+        <hediffDef>PsychicComa</hediffDef>
+        <onlyApplyToSelf>True</onlyApplyToSelf>
+      </li>
+    </comps>
+    <confirmationDialogText>Firestorm takes 12 seconds to cast, and cannot be interrupted. When complete, the caster will fall into a psychic coma for 2.5 days.\n\nEveryone in range including the caster will be hit by a wave of fire.\n\nDo you really want to cast firestorm?</confirmationDialogText>
+  </AbilityDef>
+	
+  <ThingDef>
+    <defName>FSFFirestorm</defName>
+    <label>Firestorm</label>
+    <description>This item does not exist if your reading this, what have you done?</description>
+    <category>Ethereal</category>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Building/Security/IEDEMP</texPath>
+      <drawSize>(0,0)</drawSize>
+	</graphicData>
+	<size>(0, 0)</size>
+    <thingClass>ThingWithComps</thingClass>
+    <tickerType>Normal</tickerType>
+    <drawerType>RealtimeOnly</drawerType>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <comps>
+      <li Class="CompProperties_Lifespan">
+        <lifespanTicks>0</lifespanTicks>
+      </li>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>0</wickTicks>
+		<damageAmountBase>30</damageAmountBase>
+		<armorPenetrationBase>2.0</armorPenetrationBase>
+		<chanceToStartFire>1.0</chanceToStartFire>
+        <explosiveRadius>50</explosiveRadius>
+        <explosiveDamageType>Flame</explosiveDamageType>
+		<explosionEffect>GiantExplosion</explosionEffect>
+        <explodeOnKilled>true</explodeOnKilled>
+      </li>
+    </comps>
+  </ThingDef>
+	
+	<!-- Flamebolt -->
+	
+  <AbilityDef ParentName="PsycastBaseSkip">
+    <defName>FSFFlamebolt</defName>
+    <label>flamebolt</label>
+    <description>Generate a skipgate linked to a nearby star to cause a burst of flames.</description>
+    <level>6</level>
+    <iconPath>UI/Abilities/FSFFlamebolt</iconPath>
+    <writeCombatLog>True</writeCombatLog>
+    <canUseAoeToGetTargets>False</canUseAoeToGetTargets>
+    <statBases>
+      <Ability_EntropyGain>65</Ability_EntropyGain>
+      <Ability_PsyfocusCost>0.06</Ability_PsyfocusCost>
+      <Ability_EffectRadius>2.4</Ability_EffectRadius>
+    </statBases>
+    <verbProperties>
+      <warmupTime>1</warmupTime>
+      <range>24.9</range>
+      <targetParams>
+        <canTargetPawns>True</canTargetPawns>
+        <canTargetMechs>True</canTargetMechs>
+        <canTargetAnimals>True</canTargetAnimals>
+        <canTargetLocations>True</canTargetLocations>
+		<canTargetBuildings>True</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="CompProperties_AbilitySpawn">
+        <thingDef>FSFFlamebolt</thingDef>
+        <allowOnBuildings>true</allowOnBuildings>
+      </li>
+      <li Class="CompProperties_AbilityEffecterOnTarget">
+        <effecterDef>Skip_Exit</effecterDef>
+        <maintainForTicks>60</maintainForTicks>
+      </li>
+      <li Class="CompProperties_AbilityFleckOnTarget">
+        <fleckDefs>
+          <li>PsycastSkipInnerExit</li>
+          <li>PsycastSkipOuterRingExit</li>
+        </fleckDefs>
+        <sound>Psycast_Skip_Exit</sound>
+        <preCastTicks>5</preCastTicks>
+      </li>
+    </comps>
+  </AbilityDef>
+	
+  <ThingDef>
+    <defName>FSFFlamebolt</defName>
+    <label>flamebolt</label>
+    <description>This item does not exist if your reading this, what have you done?</description>
+    <category>Ethereal</category>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Building/Security/IEDEMP</texPath>
+      <drawSize>(0,0)</drawSize>
+	  </graphicData>
+	<size>(0, 0)</size>
+    <thingClass>ThingWithComps</thingClass>
+    <tickerType>Normal</tickerType>
+    <drawerType>RealtimeOnly</drawerType>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <comps>
+      <li Class="CompProperties_Lifespan">
+        <lifespanTicks>0</lifespanTicks>
+      </li>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>0</wickTicks>
+        <explosiveRadius>2.4</explosiveRadius>
+        <explosiveDamageType>Flame</explosiveDamageType>
+        <explodeOnKilled>true</explodeOnKilled>
+      </li>
+    </comps>
+  </ThingDef>
+	
+	<!-- Fracture -->
+	
+  <AbilityDef ParentName="PsycastBase">
+    <defName>FSFFracture</defName>
+    <label>fracture</label>
+    <description>Psychically disrupt matter in the area causing targets to become temporarily more susceptible to damage.</description>
+    <level>5</level>
+    <iconPath>UI/Abilities/FSFFracture</iconPath>
+    <writeCombatLog>True</writeCombatLog>
+    <statBases>
+      <Ability_EntropyGain>40</Ability_EntropyGain>
+      <Ability_PsyfocusCost>0.04</Ability_PsyfocusCost>
+      <Ability_Duration>20</Ability_Duration>
+      <Ability_EffectRadius>3.9</Ability_EffectRadius>
+    </statBases>
+    <verbProperties>
+      <warmupTime>1</warmupTime>
+      <range>29.9</range>
+      <targetParams>
+        <canTargetSelf>True</canTargetSelf>
+		<canTargetMechs>True</canTargetMechs>
+        <canTargetAnimals>True</canTargetAnimals>
+        <canTargetLocations>True</canTargetLocations>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class = "CompProperties_AbilityGiveHediff">
+        <compClass>CompAbilityEffect_GiveHediff</compClass>
+        <hediffDef>FSFFracture</hediffDef>
+        <goodwillImpact>-15</goodwillImpact>
+        <applyGoodwillImpactToLodgers>False</applyGoodwillImpactToLodgers>
+      </li>
+      <li Class="CompProperties_AbilityFleckOnTarget">
+        <fleckDef>PsycastPsychicEffect</fleckDef>
+      </li>
+    </comps>
+  </AbilityDef>
+	
+  <HediffDef ParentName = "PsycastHediffBase">
+    <defName>FSFFracture</defName>
+    <label>psychic fracture</label>
+    <description>Psychically-induced disruption to armor and incoming damage.</description>
+    <isBad>true</isBad>
+    <stages>
+      <li>
+        <statFactors>
+          <IncomingDamageFactor>1.5</IncomingDamageFactor>
+        </statFactors>
+        <statOffsets>
+          <ArmorRating_Sharp>-1.0</ArmorRating_Sharp>
+          <ArmorRating_Blunt>-1.0</ArmorRating_Blunt>
+          <ArmorRating_Heat>-1.0</ArmorRating_Heat>
+        </statOffsets>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_GiveHediffsInRange">
+        <range>-1</range>
+        <mote>FSFMoteFracture</mote>
+        <hideMoteWhenNotDrafted>false</hideMoteWhenNotDrafted>
+        <targetingParameters>
+          <canTargetSelf>True</canTargetSelf>
+		  <canTargetMechs>True</canTargetMechs>
+          <canTargetAnimals>True</canTargetAnimals>
+          <canTargetLocations>True</canTargetLocations>
+        </targetingParameters>
+      </li>
+    </comps>
+  </HediffDef>
+	
+  <ThingDef ParentName="MoteBase">
+    <defName>FSFMoteFracture</defName>
+    <thingClass>MoteAttached</thingClass>
+    <altitudeLayer>MetaOverlays</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.25</fadeInTime>
+      <solidTime>1</solidTime>
+      <fadeOutTime>0.25</fadeOutTime>
+      <needsMaintenance>true</needsMaintenance>
+      <attachedDrawOffset>(0.4, 0, 0.4)</attachedDrawOffset>
+    </mote>
+    <graphicData>
+      <graphicClass>Graphic_Mote</graphicClass>
+      <texPath>Things/Mote/FSFMoteFracture</texPath>
+      <drawSize>0.75</drawSize>
+    </graphicData>
+  </ThingDef>
+	
+	<!-- Frostbite -->
+	
+  <AbilityDef ParentName="PsycastBaseSkip">
+    <defName>FSFFrostbite</defName>
+    <label>frostbite</label>
+    <description>Using a skipgate blast a target with intense frigid air skipped from a cold faraway place.</description>
+    <level>2</level>
+    <iconPath>UI/Abilities/FSFFrostbite</iconPath>
+    <writeCombatLog>True</writeCombatLog>
+    <canUseAoeToGetTargets>False</canUseAoeToGetTargets>
+    <statBases>
+      <Ability_EntropyGain>15</Ability_EntropyGain>
+      <Ability_PsyfocusCost>0.03</Ability_PsyfocusCost>
+	  <Ability_Duration>0.25</Ability_Duration>
+    </statBases>
+    <verbProperties>
+      <warmupTime>1</warmupTime>
+      <range>29.9</range>
+      <targetParams>
+        <canTargetPawns>True</canTargetPawns>
+        <canTargetMechs>False</canTargetMechs>
+        <canTargetAnimals>True</canTargetAnimals>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class = "CompProperties_AbilityEffectWithDuration">
+        <compClass>CompAbilityEffect_Stun</compClass>
+        <goodwillImpact>-15</goodwillImpact>
+      </li>
+      <li Class="CompProperties_AbilitySpawn">
+        <thingDef>FSFFrostbite</thingDef>
+        <allowOnBuildings>true</allowOnBuildings>
+      </li>
+      <li Class="CompProperties_AbilityFleckOnTarget">
+        <fleckDefs>
+          <li>PsycastSkipInnerExit</li>
+          <li>PsycastSkipOuterRingExit</li>
+        </fleckDefs>
+        <preCastTicks>5</preCastTicks>
+      </li>
+    </comps>
+  </AbilityDef>
+	
+  <ThingDef>
+    <defName>FSFFrostbite</defName>
+    <label>frostbite</label>
+    <description>This item does not exist if your reading this, what have you done?</description>
+    <category>Ethereal</category>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Building/Security/IEDEMP</texPath>
+      <drawSize>(0,0)</drawSize>
+	</graphicData>
+	<size>(0, 0)</size>
+    <thingClass>ThingWithComps</thingClass>
+    <tickerType>Normal</tickerType>
+    <drawerType>RealtimeOnly</drawerType>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <comps>
+      <li Class="CompProperties_Lifespan">
+        <lifespanTicks>0</lifespanTicks>
+      </li>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>0</wickTicks>
+        <explosiveRadius>0</explosiveRadius>
+        <explosiveDamageType>FSFFrostbite</explosiveDamageType>
+        <explodeOnKilled>true</explodeOnKilled>
+      </li>
+    </comps>
+  </ThingDef>
+	
+  <DamageDef>
+    <defName>FSFFrostbite</defName>
+    <label>frostbite</label>
+    <workerClass>DamageWorker_Frostbite</workerClass>
+    <externalViolence>false</externalViolence>
+    <deathMessage>{0} has succumbed to frostbite.</deathMessage>
+    <defaultDamage>30</defaultDamage>
+    <defaultStoppingPower>2.0</defaultStoppingPower>
+    <defaultArmorPenetration>2.0</defaultArmorPenetration>
+    <combatLogRules>FSFDamage_FSFFrostbite</combatLogRules>
+    <hediff>Frostbite</hediff>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+	<canUseDeflectMetalEffect>false</canUseDeflectMetalEffect>
+	<soundExplosion>Psycast_Skip_Exit</soundExplosion>
+  </DamageDef>
+	
+  <RulePackDef>
+    <defName>FSFDamage_FSFFrostbite</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>damaged_past(p=2)->chilled</li>
+        <li>damaged_past(p=2)->frosted</li>
+        <li>damaged_past(p=2)->iced</li>
+        <li>damaged_past(p=2)->freezing</li>
+        <li>damaged_past->injuring</li>
+        <li>damaged_past->damaging</li>
+        <li>damaged_past->wounding</li>
+        <li>damaged_past->hurt</li>
+
+        <li>damaged_present(p=2)->chilling</li>
+        <li>damaged_present(p=2)->frosting</li>
+        <li>damaged_present(p=2)->icy</li>
+        <li>damaged_present(p=2)->freezing</li>
+        <li>damaged_present->injuring</li>
+        <li>damaged_present->damaging</li>
+        <li>damaged_present->wounding</li>
+        <li>damaged_present->hurting</li>
+
+        <li>destroyed_past->shattered</li>
+        <li>destroyed_past->frosted</li>
+        <li>destroyed_past->destroyed</li>
+
+        <li>destroyed_present->shattered</li>
+        <li>destroyed_present->frosted</li>
+        <li>destroyed_present->destroying</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+	
+	<!-- Mass Invisiblity -->
+	
+  <AbilityDef ParentName="PsycastBase">
+    <defName>FSFMassInvisibility</defName>
+    <label>mass invisibility</label>
+    <description>Psychically manipulate the visual centers of everyone nearby, rendering them unable to perceive a group of individuals for a short time.</description>
+    <level>6</level>
+    <iconPath>UI/Abilities/FSFMassInvisibility</iconPath>
+    <writeCombatLog>True</writeCombatLog>
+    <statBases>
+      <Ability_EntropyGain>70</Ability_EntropyGain>
+      <Ability_PsyfocusCost>0.05</Ability_PsyfocusCost>
+      <Ability_Duration>15</Ability_Duration>
+      <Ability_EffectRadius>1.9</Ability_EffectRadius>
+    </statBases>
+    <verbProperties>
+      <warmupTime>1</warmupTime>
+      <range>19.9</range>
+      <onlyManualCast>True</onlyManualCast>
+      <targetParams>
+        <canTargetSelf>True</canTargetSelf>
+        <canTargetAnimals>True</canTargetAnimals>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class = "CompProperties_AbilityGiveHediff">
+        <compClass>CompAbilityEffect_GiveHediff</compClass>
+        <hediffDef>PsychicInvisibility</hediffDef>
+        <psychic>True</psychic>
+      </li>
+      <li Class="CompProperties_AbilityFleckOnTarget">
+        <fleckDef>PsycastPsychicEffect</fleckDef>
+      </li>
+    </comps>    
+  </AbilityDef>
+	
+	<!-- Mass Skip -->
+	
+  <AbilityDef ParentName="PsycastBaseSkip">
+    <defName>FSFMassSkip</defName>
+    <label>mass skip</label>
+    <description>Skip everyone near a target point to a location nearby.</description>
+    <level>6</level>
+    <iconPath>UI/Abilities/FSFMassSkip</iconPath>
+    <writeCombatLog>True</writeCombatLog>
+    <statBases>
+      <Ability_EntropyGain>50</Ability_EntropyGain>
+      <Ability_PsyfocusCost>0.04</Ability_PsyfocusCost>
+      <Ability_EffectRadius>2.4</Ability_EffectRadius>
+    </statBases>
+    <verbProperties>
+      <warmupTime>1</warmupTime>
+      <range>27.9</range>
+      <targetParams>
+        <canTargetSelf>True</canTargetSelf>
+        <canTargetAnimals>True</canTargetAnimals>
+		<canTargetItems>True</canTargetItems>
+        <canTargetLocations>True</canTargetLocations>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class = "CompProperties_AbilityTeleport">
+        <compClass>CompAbilityEffect_Teleport</compClass>
+        <destination>Selected</destination>
+        <range>27.9</range>
+        <requiresLineOfSight>True</requiresLineOfSight>
+        <clamorType>Ability</clamorType>
+        <clamorRadius>10</clamorRadius>
+        <destClamorType>Ability</destClamorType>
+        <destClamorRadius>10</destClamorRadius>
+		<goodwillImpact>-15</goodwillImpact>
+        <applyGoodwillImpactToLodgers>False</applyGoodwillImpactToLodgers>
+      </li>
+    </comps>
+  </AbilityDef>
+	
+	<!-- Psyblade -->
+	
+  <AbilityDef ParentName="PsycastBase">
+    <defName>FSFPsyblade</defName>
+    <label>psyblade</label>
+    <description>The caster molds psychic energy into a sharp bladed weapon usable in combat.</description>
+    <level>5</level>
+    <iconPath>UI/Abilities/FSFPsyblade</iconPath>
+	<jobDef>CastAbilityOnThing</jobDef>
+    <targetRequired>False</targetRequired>
+    <writeCombatLog>True</writeCombatLog>
+    <statBases>
+      <Ability_EntropyGain>40</Ability_EntropyGain>
+      <Ability_PsyfocusCost>0.04</Ability_PsyfocusCost>
+      <Ability_Duration>60</Ability_Duration>
+    </statBases>
+    <verbProperties>
+      <warmupTime>0.25</warmupTime>
+      <targetParams>
+        <canTargetSelf>true</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class = "CompProperties_AbilityGiveHediff">
+        <compClass>CompAbilityEffect_GiveHediff</compClass>
+        <hediffDef>FSFPsyblade</hediffDef>
+        <onlyBrain>True</onlyBrain>
+		<onlyApplyToSelf>True</onlyApplyToSelf>
+        <psychic>True</psychic>
+        <durationMultiplier>PsychicSensitivity</durationMultiplier>
+      </li>
+      <li Class="CompProperties_AbilityFleckOnTarget">
+        <fleckDef>PsycastPsychicEffect</fleckDef>
+      </li>
+    </comps>
+  </AbilityDef>
+	
+  <HediffDef ParentName = "PsycastHediffBase">
+    <defName>FSFPsyblade</defName>
+    <label>psychic psyblade</label>
+    <description>Psychically-manifested blade.</description>
+    <isBad>false</isBad>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+					<li>
+						<label>psyblade edge</label>
+						<capacities>
+							<li>Cut</li>
+						</capacities>
+						<power>30</power>
+						<armorPenetration>1.0</armorPenetration>
+						<cooldownTime>2</cooldownTime>
+						<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+						<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+						<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+					</li>
+					<li>
+						<label>psyblade point</label>
+						<capacities>
+							<li>Stab</li>
+						</capacities>
+						<power>30</power>
+						<armorPenetration>1.0</armorPenetration>
+						<cooldownTime>2</cooldownTime>
+						<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+						<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+						<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+					</li>
+				</tools>
+			</li>
+		</comps>
+  </HediffDef>
+	
+	<!-- Psychic Shock -->
+	
+  <AbilityDef ParentName="PsycastBase">
+    <defName>FSFPsychicShock</defName>
+    <label>psychic shock</label>
+    <description>Shocks the target's mind with chaotic images, blocking coherent perception and dropping him into a state of psychic shock.</description>
+    <level>5</level>
+    <iconPath>UI/Abilities/FSFPsychicShock</iconPath>
+    <writeCombatLog>True</writeCombatLog>
+    <statBases>
+      <Ability_EntropyGain>40</Ability_EntropyGain>
+      <Ability_PsyfocusCost>0.04</Ability_PsyfocusCost>
+      <Ability_Duration>240</Ability_Duration>
+    </statBases>
+    <verbProperties>
+      <warmupTime>0.25</warmupTime>
+      <range>19.9</range>
+      <targetParams>
+        <canTargetSelf>false</canTargetSelf>
+        <canTargetAnimals>True</canTargetAnimals>
+		<canTargetMechs>True</canTargetMechs>
+        <neverTargetIncapacitated>True</neverTargetIncapacitated>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class = "CompProperties_AbilityGiveHediff">
+        <compClass>CompAbilityEffect_GiveHediff</compClass>
+        <hediffDef>PsychicShock</hediffDef>
+        <onlyBrain>True</onlyBrain>
+        <psychic>True</psychic>
+        <durationMultiplier>PsychicSensitivity</durationMultiplier>
+		<goodwillImpact>-75</goodwillImpact>
+      </li>
+      <li Class="CompProperties_AbilityFleckOnTarget">
+        <fleckDef>PsycastPsychicEffect</fleckDef>
+      </li>
+    </comps>
+  </AbilityDef>
+	
+	<!-- Stasis -->
+	
+  <AbilityDef ParentName="PsycastBase">
+    <defName>FSFStasis</defName>
+    <label>stasis</label>
+    <description>Psychically manipulate a targets brain functions to put them into a stasis like state.  While in stasis the target’s bodily functions are brought to almost a complete standstill.  This prevents needs such as hunger and rest from decaying, stops all bleeding and prevents new diseases and infections from forming.</description>
+    <level>5</level>
+    <iconPath>UI/Abilities/FSFStasis</iconPath>
+	<jobDef>CastAbilityOnThingMelee</jobDef>
+    <warmupMote>Mote_WarmupWordOf</warmupMote>
+    <warmupSound>Psycast_WordOf_Warmup</warmupSound>
+	<stunTargetWhileCasting>True</stunTargetWhileCasting>
+    <statBases>
+      <Ability_PsyfocusCost>0.1</Ability_PsyfocusCost>
+      <Ability_Duration>1000</Ability_Duration>
+    </statBases>
+    <verbProperties>
+	  <drawAimPie>False</drawAimPie>
+      <warmupTime>2</warmupTime>
+      <range>-1</range>
+      <targetParams>
+        <canTargetSelf>false</canTargetSelf>
+        <canTargetAnimals>True</canTargetAnimals>
+		<neverTargetHostileFaction>True</neverTargetHostileFaction>
+		<onlyTargetColonists>True</onlyTargetColonists>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class = "CompProperties_AbilityGiveHediff">
+        <compClass>CompAbilityEffect_GiveHediff</compClass>
+        <hediffDef>FSFStasis</hediffDef>
+		<onlyBrain>True</onlyBrain>
+        <psychic>True</psychic>
+        <applicableToMechs>False</applicableToMechs>
+      </li>
+      <li Class="CompProperties_AbilityFleckOnTarget">
+        <fleckDef>PsycastPsychicEffect</fleckDef>
+		<sound>Psycast_WordOf_Effect</sound>
+      </li>
+    </comps>
+  </AbilityDef>
+	
+  <HediffDef ParentName = "PsycastHediffBase">
+    <defName>FSFStasis</defName>
+    <label>stasis</label>
+    <description>Psychically-induced stasis.</description>
+    <isBad>false</isBad>
+      <stages>
+        <li>
+		  <painFactor>0</painFactor>
+		  <totalBleedFactor>0</totalBleedFactor>
+		  <hungerRateFactor>0.001</hungerRateFactor>
+		  <restFallFactor>0.001</restFallFactor>
+		  <statOffsets>
+		    <BladderRateMultiplier MayRequire="Dubwise.DubsBadHygiene">-3.0</BladderRateMultiplier>
+		    <ThirstRateMultiplier MayRequire="Dubwise.DubsBadHygiene">-3.0</ThirstRateMultiplier>
+		  </statOffsets>
+		<capMods>
+		  <li>
+			<capacity>Consciousness</capacity>
+			<setMax>0.01</setMax>
+		  </li>          
+		</capMods>
+          <makeImmuneTo>
+			<li>Animal_Flu</li>
+			<li>Animal_Plague</li>
+			<li>FibrousMechanites</li>
+			<li>Flu</li>
+			<li>FoodPoisoning</li>
+			<li>GutWorms</li>
+            <li>Malaria</li>
+			<li>MuscleParasites</li>
+			<li>SensoryMechanites</li>
+            <li>SleepingSickness</li>
+            <li>Plague</li>
+			<li>WoundInfection</li>
+          </makeImmuneTo>
+        </li>
+      </stages>
+  </HediffDef>
+	
+	<!-- Steelskin -->
+	
+  <AbilityDef ParentName="PsycastBase">
+    <defName>FSFSteelskin</defName>
+    <label>steelskin</label>
+    <description>Wraps the target's body with psychic energy creating a barrier that mitigates incoming damage.</description>
+    <level>4</level>
+    <iconPath>UI/Abilities/FSFSteelskin</iconPath>
+    <writeCombatLog>True</writeCombatLog>
+    <statBases>
+      <Ability_EntropyGain>15</Ability_EntropyGain>
+      <Ability_PsyfocusCost>0.03</Ability_PsyfocusCost>
+      <Ability_Duration>60</Ability_Duration>
+    </statBases>
+    <verbProperties>
+      <warmupTime>0.25</warmupTime>
+      <range>27.9</range>
+      <targetParams>
+        <canTargetSelf>True</canTargetSelf>
+        <canTargetAnimals>True</canTargetAnimals>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class = "CompProperties_AbilityGiveHediff">
+        <compClass>CompAbilityEffect_GiveHediff</compClass>
+        <hediffDef>FSFSteelskin</hediffDef>
+        <onlyBrain>True</onlyBrain>
+        <psychic>True</psychic>
+        <durationMultiplier>PsychicSensitivity</durationMultiplier>
+      </li>
+      <li Class="CompProperties_AbilityFleckOnTarget">
+        <fleckDef>PsycastPsychicEffect</fleckDef>
+      </li>
+    </comps>
+  </AbilityDef>
+	
+  <HediffDef ParentName = "PsycastHediffBase">
+    <defName>FSFSteelskin</defName>
+    <label>psychic steelskin</label>
+    <description>A barrier formed with psychic energy that mitigates incoming damage.</description>
+    <isBad>false</isBad>
+    <stages>
+      <li>
+        <statFactors>
+          <IncomingDamageFactor>0.5</IncomingDamageFactor>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

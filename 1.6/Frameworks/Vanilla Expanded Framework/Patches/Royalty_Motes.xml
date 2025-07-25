@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+
+	<!-- Mini Buff Icons -->
+	
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>False</enabled>
+		<label>Mini buff icons</label>
+		<mods>
+			<li>[FSF] More Psycast Powers</li>
+		</mods>
+		
+  		<operations>
+			
+			<!-- Blinding Pulse -->
+		
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/HediffDef[defName = "PsychicBlindness"]</xpath>
+				<value>
+					<comps>
+						<li Class="HediffCompProperties_GiveHediffsInRange">
+							<range>-1</range>
+							<mote>FSFMoteBlindingPulse</mote>
+							<hideMoteWhenNotDrafted>false</hideMoteWhenNotDrafted>
+							<targetingParameters>
+								<canTargetSelf>true</canTargetSelf>
+							</targetingParameters>
+						</li>
+					</comps>
+				</value>
+			</li>
+			
+			<!-- Focus -->
+		
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/HediffDef[defName = "PsychicFocus"]</xpath>
+				<value>
+					<comps>
+						<li Class="HediffCompProperties_GiveHediffsInRange">
+							<range>-1</range>
+							<mote>FSFMoteFocus</mote>
+							<hideMoteWhenNotDrafted>false</hideMoteWhenNotDrafted>
+							<targetingParameters>
+								<canTargetSelf>true</canTargetSelf>
+							</targetingParameters>
+						</li>
+					</comps>
+				</value>
+			</li>
+			
+			<!-- Painblock -->
+		
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/HediffDef[defName = "PsychicAnesthesia"]</xpath>
+				<value>
+					<comps>
+						<li Class="HediffCompProperties_GiveHediffsInRange">
+							<range>-1</range>
+							<mote>FSFMotePainblock</mote>
+							<hideMoteWhenNotDrafted>false</hideMoteWhenNotDrafted>
+							<targetingParameters>
+								<canTargetSelf>true</canTargetSelf>
+							</targetingParameters>
+						</li>
+					</comps>
+				</value>
+			</li>
+			
+			<!-- FSF Psyblade -->
+		
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/HediffDef[defName = "FSFPsyblade"]/comps</xpath>
+				<value>
+					<li Class="HediffCompProperties_GiveHediffsInRange">
+						<range>-1</range>
+						<mote>FSFMotePsyblade</mote>
+						<hideMoteWhenNotDrafted>false</hideMoteWhenNotDrafted>
+						<targetingParameters>
+							<canTargetSelf>true</canTargetSelf>
+						</targetingParameters>
+					</li>
+				</value>
+			</li>
+			
+			<!-- FSF Steelskin -->
+		
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/HediffDef[defName = "FSFSteelskin"]</xpath>
+				<value>
+					<comps>
+						<li Class="HediffCompProperties_GiveHediffsInRange">
+							<range>-1</range>
+							<mote>FSFMoteSteelskin</mote>
+							<hideMoteWhenNotDrafted>false</hideMoteWhenNotDrafted>
+							<targetingParameters>
+								<canTargetSelf>true</canTargetSelf>
+							</targetingParameters>
+						</li>
+					</comps>
+				</value>
+			</li>
+			
+		</operations>
+
+	</Operation>
+	
+</Patch>
