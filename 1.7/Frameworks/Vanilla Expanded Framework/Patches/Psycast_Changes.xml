@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+
+	<!-- Flashstorm Has Smaller More Accurate Targeting -->
+	
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>False</enabled>
+		<label>Flashstorm has smaller more accurate targeting</label>
+		<mods>
+			<li>[FSF] More Psycast Powers</li>
+		</mods>
+		
+  		<operations>
+			
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/AbilityDef[defName = "Flashstorm"]/statBases/Ability_EffectRadius</xpath>
+				<value>
+					<Ability_EffectRadius>2.4</Ability_EffectRadius>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/AbilityDef[defName = "Flashstorm"]/verbProperties/targetParams/canTargetPawns</xpath>
+				<value>
+        			<canTargetPawns>True</canTargetPawns>
+				</value>
+			</li>
+			
+		</operations>
+
+	</Operation>
+	
+	<!-- Skip Psycast Isn't Considered Hostile -->
+	
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>False</enabled>
+		<label>Skip isn't considered hostile</label>
+		<mods>
+			<li>[FSF] More Psycast Powers</li>
+		</mods>
+		
+  		<operations>
+		
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/AbilityDef[defName = "Skip"]/comps/li[@Class = "CompProperties_AbilityTeleport"]/goodwillImpact</xpath>
+				<value>
+					<goodwillImpact>0</goodwillImpact>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/AbilityDef[defName = "FSFMassSkip"]/comps/li[@Class = "CompProperties_AbilityTeleport"]/goodwillImpact</xpath>
+				<value>
+					<goodwillImpact>0</goodwillImpact>
+				</value>
+			</li>
+			
+		</operations>
+
+	</Operation>
+	
+	<!-- Skip Goes Through Walls -->
+	
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>False</enabled>
+		<label>Skip goes through walls</label>
+		<mods>
+			<li>[FSF] More Psycast Powers</li>
+		</mods>
+		
+  		<operations>
+		
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/AbilityDef[defName = "Skip"]/comps/li[@Class = "CompProperties_AbilityTeleport"]/requiresLineOfSight</xpath>
+				<value>
+					<requiresLineOfSight>False</requiresLineOfSight>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/AbilityDef[defName = "FSFMassSkip"]/comps/li[@Class = "CompProperties_AbilityTeleport"]/requiresLineOfSight</xpath>
+				<value>
+					<requiresLineOfSight>False</requiresLineOfSight>
+				</value>
+			</li>
+			
+		</operations>
+
+	</Operation>
+	
+	<!-- Skipshield Allows Outgoing Projectiles -->
+	
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>False</enabled>
+		<label>Skipshield allows outgoing projectiles</label>
+		<mods>
+			<li>[FSF] More Psycast Powers</li>
+		</mods>
+		
+  		<operations>
+		
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/AbilityDef[defName = "BulletShield"]/description</xpath>
+				<value>
+					<description>Generate a spherical skipgate that sends all incoming ground-level projectiles to some distant place. People and items are not affected.</description>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName = "BulletShieldPsychic"]/comps/li[@Class = "CompProperties_ProjectileInterceptor"]/interceptOutgoingProjectiles</xpath>
+				<value>
+					<interceptOutgoingProjectiles>false</interceptOutgoingProjectiles>
+				</value>
+			</li>
+			
+		</operations>
+
+	</Operation>
+	
+	<!-- Solar Pinhole Provides Sunlight -->
+	
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>False</enabled>
+		<label>Solar Pinhole provides sunlight</label>
+		<mods>
+			<li>[FSF] More Psycast Powers</li>
+		</mods>
+		
+  		<operations>
+		
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName = "SolarPinhole"]/comps/li[@Class = "CompProperties_Glower"]</xpath>
+				<value>
+					<li Class="CompProperties_Glower">
+						<overlightRadius>7.0</overlightRadius>
+						<glowRadius>15</glowRadius>
+						<glowColor>(370,370,370,0)</glowColor>
+					</li>
+				</value>
+			</li>
+			
+		</operations>
+
+	</Operation>
+	
+	<!-- Waterskip Can Target Pawns -->
+	
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>False</enabled>
+		<label>Waterskip can target pawns</label>
+		<mods>
+			<li>[FSF] More Psycast Powers</li>
+		</mods>
+		
+  		<operations>
+		
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/AbilityDef[defName = "Waterskip"]/verbProperties/targetParams</xpath>
+				<value>
+					<targetParams>
+						<canTargetPawns>True</canTargetPawns>
+						<canTargetAnimals>True</canTargetAnimals>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+				</value>
+			</li>
+			
+		</operations>
+
+	</Operation>
+	
+	<!-- Stasis Can Target Animals, Friendlies and Enemies -->
+	
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>False</enabled>
+		<label>Stasis can target animals, friendlies and enemies</label>
+		<mods>
+			<li>[FSF] More Psycast Powers</li>
+		</mods>
+		
+  		<operations>
+		
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/AbilityDef[defName = "FSFStasis"]/verbProperties/targetParams</xpath>
+				<value>
+					<targetParams>
+						<canTargetSelf>false</canTargetSelf>
+						<canTargetAnimals>True</canTargetAnimals>
+					</targetParams>
+				</value>
+			</li>
+			
+		</operations>
+
+	</Operation>
+	
+</Patch>

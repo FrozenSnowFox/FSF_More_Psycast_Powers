@@ -50,7 +50,7 @@
 		
 	</v1.5>
 	
-	<v1.6>	
+	<v1.6>
 
 		<!-- Vanilla -->
 		
@@ -65,5 +65,21 @@
 		<li IfModActive="OskarPotocki.VanillaFactionsExpanded.Core">1.6/Frameworks/Vanilla Expanded Framework</li>
 		
 	</v1.6>
+	
+	<v1.7>
+
+		<!-- Vanilla -->
+		
+		<li>/</li>
+		<li>1.7/Ludeon/Core</li>
+		
+		
+		
+		<!-- Frameworks -->
+		
+		<!-- Mod Vanilla Expanded Framework-->		
+		<li IfModActive="OskarPotocki.VanillaFactionsExpanded.Core">1.7/Frameworks/Vanilla Expanded Framework</li>
+		
+	</v1.7>
 	
 </loadFolders>
